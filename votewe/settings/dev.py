@@ -1,4 +1,5 @@
 from votewe.settings.base import *
+import os, dj_database_url
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -17,7 +18,7 @@ DATABASES['default'] = {
         'NAME': BASE_DIR / 'votwe.db',
 }
 # DATABASES['default'] = dj_database_url.parse(
-#     url=os.getenv('DATABASE_URL'), conn_max_age=600
+#     url='postgres://koazuejutgtgib:ef93965e0d265fe20e4100717836a56362d7b74fd59d1dbd482ea0b9303c55da@ec2-52-73-155-171.compute-1.amazonaws.com:5432/df59lg9d1d0jb9', conn_max_age=600
 # )
 
 

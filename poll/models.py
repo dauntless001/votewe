@@ -28,7 +28,7 @@ class LGA(TimeBasedModel):
 
 
 class Ward(TimeBasedModel):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     ward_id = models.IntegerField()
     lga = models.ForeignKey('poll.LGA', on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
@@ -41,14 +41,14 @@ class Ward(TimeBasedModel):
 
 class PollingUnit(TimeBasedModel):
     polling_unit_id = models.IntegerField()
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=60)
     ward = models.ForeignKey('poll.Ward', on_delete=models.SET_NULL, null=True, blank=True)
     lga = models.ForeignKey('poll.LGA', on_delete=models.SET_NULL, null=True, blank=True)
-    number = models.CharField(max_length=20, null=True, blank=True)
-    description  = models.CharField(max_length=50, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    entered_by = models.CharField(max_length=40, null=True, blank=True)
+    number = models.CharField(max_length=40, null=True, blank=True)
+    description  = models.CharField(max_length=100, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=20, decimal_places=10, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=20, decimal_places=10, null=True, blank=True)
+    entered_by = models.CharField(max_length=80, null=True, blank=True)
     ip_address = models.GenericIPAddressField(max_length=25, null=True, blank=True)
 
     def __str__(self):
@@ -57,9 +57,9 @@ class PollingUnit(TimeBasedModel):
 
 
 class Agent(models.Model):
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
-    email = models.EmailField(max_length=40)
+    first_name = models.CharField(max_length=80)
+    last_name = models.CharField(max_length=80)
+    email = models.EmailField(max_length=80)
     phone = models.IntegerField()
     polling_unit = models.OneToOneField('poll.PollingUnit', on_delete=models.CASCADE)
 
@@ -68,8 +68,8 @@ class Agent(models.Model):
 
 
 class Party(TimeBasedModel):
-    name =  models.CharField(max_length=15)
-    abbreviation =  models.CharField(max_length=15)
+    name =  models.CharField(max_length=30)
+    abbreviation =  models.CharField(max_length=30)
 
     def __str__(self):
         return f'{self.name} Party'
