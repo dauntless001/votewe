@@ -1,1 +1,1 @@
-web: gunicorn weLA.wsgi --preload --log-file -
+web: gunicorn votewe.wsgi --preload --log-file -
