@@ -28,7 +28,7 @@ STATIC_ROOT = Path.cwd().joinpath(BASE_DIR).joinpath('assets')
 
 STATIC_DIRS = Path.cwd().joinpath(BASE_DIR).joinpath('votewe/assets')
 STATICFILES_DIRS = [
-    STATIC_DIRS,
+    
 ]
 
 # Media Files
